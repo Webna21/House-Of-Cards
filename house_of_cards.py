@@ -12,6 +12,11 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+import turtle as t
+
+'''
+
+'''
 
 def costs():
     '''
@@ -29,6 +34,8 @@ def costs():
     print(f"Total Costs:\t\t\t\t\t\t{cards_purchased*1000 + rolls_of_tape*10000 + pairs_of_scissors*5000 + time_beyond_25*2000}")
     return cards_purchased*1000 + rolls_of_tape*10000 + pairs_of_scissors*5000 + time_beyond_25*2000
 
+
+
 def revenue():
     '''
     Calculates, prints, and returns the revenue.
@@ -45,6 +52,8 @@ def revenue():
     print(f"Total Revenue: \t\t\t\t\t\t\t\t\t{successfully_built * 100000 + height*2000 + strength*500 + speed*1000}")
     return successfully_built * 100000 + height*2000 + strength*500 + speed*1000
 
+
+
 def totalProfitcalculation():
     '''
     Calculates, prints, and returns the profit.
@@ -53,6 +62,8 @@ def totalProfitcalculation():
     rev = revenue()
     print(f"\nTotal Profit = Total Revenue - Total Costs = {rev} - {cost} = {rev-cost}")
     return rev-cost
+
+
 
 def calculateTotalProfitAndAccuracy():
     '''
@@ -68,6 +79,7 @@ def calculateTotalProfitAndAccuracy():
     print(f"Percent Error = (Actual - Expected)/(Expected) * 100% = {percentError:.3f}%")
 
     return expected, actual, percentError
+
 
 
 def graphTotalProfitAndAccuracy(estimated, actual, percentError):
@@ -96,6 +108,8 @@ def graphTotalProfitAndAccuracy(estimated, actual, percentError):
 
     plt.show()
 
+
+
 def extractFileData():
     '''
     Extracts data from "HouseofCardsResults.csv" and returns the heights, pennies, profits, and profit accuracies.
@@ -114,6 +128,8 @@ def extractFileData():
 
         return (heights, pennies), (profits, profitAccuracies)
 
+
+
 def graphHeightWeightComparison(expectedPennies, expectedHeight):
     '''
     Displays a scatter plot illustrating previous teams' height vs. weight compared to our's.
@@ -130,6 +146,8 @@ def graphHeightWeightComparison(expectedPennies, expectedHeight):
     plt.legend(loc="upper right")
 
     plt.show()
+
+
 
 def graphProfitPercentErrorComparison(expectedProfit, profitPercentError):
     '''
@@ -149,12 +167,15 @@ def graphProfitPercentErrorComparison(expectedProfit, profitPercentError):
     plt.show()
 
 
+
 def appendTeamResultsCSV(actualProfit,profitPercentError,actualHeight,actualPennies):
     '''
     Appends our profit, precent error, height, and pennies to "HouseOfCardsResults.csv".
     '''
     with open("HouseofCardsResults.csv","a") as file:
         file.write(f"59,{actualProfit},{profitPercentError}%,{actualHeight},{actualPennies}")
+
+
 
 def resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies):
     '''
@@ -166,11 +187,238 @@ def resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies):
         file.write(f"Height: {actualHeight}\n")
         file.write(f"Pennies: {actualPennies}\n")
 
+
+
+def cyl1():
+    '''
+    Draws a cylinder.
+    '''
+    t.color("White")
+    t.width(2)
+    t.pd()
+    t.forward(15)
+    t.left(90)
+    t.forward(50)
+    t.left(90)
+    t.forward(15)
+    t.left(90)
+    t.forward(50)
+    t.left(90)
+    t.forward(15)
+    t.left(90)
+    t.forward(50)
+    t.left(90)
+    t.forward(15)
+    t.right(180)
+
+def cyl2():
+    '''
+    Draws a cylinder.
+    '''
+    t.color("White")
+    t.width(2)
+    t.pd()
+    t.forward(14)
+    t.left(90)
+    t.forward(45)
+    t.left(90)
+    t.forward(14)
+    t.left(90)
+    t.forward(45)
+    t.left(90)
+    t.forward(14)
+    t.left(90)
+    t.forward(45)
+    t.left(90)
+    t.forward(14)
+    t.right(180)
+    
+def cyl3():
+    '''
+    Draws a cylinder.
+    '''
+    t.color("White")
+    t.width(2)
+    t.pd()
+    t.forward(12)
+    t.left(90)
+    t.forward(40)
+    t.left(90)
+    t.forward(12)
+    t.left(90)
+    t.forward(40)
+    t.left(90)
+    t.forward(12)
+    t.left(90)
+    t.forward(40)
+    t.left(90)
+    t.forward(12)
+    t.right(180)
+
+def leg1():
+    '''
+    Draws the first leg.
+    '''
+    t.goto(-100,-300)
+    #1
+    t.right(3)
+    cyl1()
+    #2
+    t.right(3)
+    cyl1()
+    #3
+    t.right(3)
+    cyl1()
+    #4
+    t.right(2)
+    cyl1()
+    #5
+    t.right(2)
+    cyl1()
+    #6
+    t.right(2)
+    cyl1()
+    #7
+    t.right(1)
+    cyl1()
+    #8
+    t.right(1)
+    cyl1()
+    #9
+    t.right(1)
+    cyl1()
+    #right by 18degs
+    #10
+    t.left(5)
+    cyl1()
+    #12
+    t.left(6)
+    cyl1()
+    #13
+    t.left(7)
+    cyl1()
+    #left by 18degs
+    t.pu()
+    
+def leg2():
+    '''
+    Draws the second leg.
+    '''
+    t.goto(100,-250)
+    t.left(3)
+    cyl2()
+    #2
+    t.left(3)
+    cyl2()
+    #3
+    t.left(3)
+    cyl2()
+    #4
+    t.left(2)
+    cyl2()
+    #5
+    t.left(2)
+    cyl2()
+    #6
+    t.left(2)
+    cyl2()
+    #7
+    t.left(1)
+    cyl2()
+    #8
+    t.left(1)
+    cyl2()
+    #9
+    t.left(1)
+    cyl2()
+    #left by 18degs
+    #10
+    t.right(5)
+    cyl2()
+    #12
+    t.right(6)
+    cyl2()
+    #13
+    t.right(7)
+    cyl2()
+    #right by 18degs
+    t.pu()
+    
+def leg3():
+    '''
+    Draws the third leg.
+    '''
+    t.goto(0,-200)
+    #1
+    t.right(1)
+    cyl3()
+    #2
+    t.right(2)
+    cyl3()
+    #3
+    t.right(3)
+    cyl3()
+    #4
+    t.right(2)
+    cyl3()
+    #5
+    t.right(1)
+    cyl3()
+    #6
+    t.left(.5)
+    cyl3()
+    #right by 19degs
+    #7
+    t.left(3)
+    cyl3()
+    #8
+    t.left(4)
+    cyl3()
+    #9
+    t.left(5)
+    cyl3()
+    #10
+    t.left(4)
+    cyl3()
+    #12
+    t.left(3)
+    cyl3()
+    #13
+    t.right(19)
+    cyl3()
+    #left by 19degs
+    t.pu()
+    
+def base():
+    '''
+    Draws the base.
+    '''
+    t.color("White")
+    t.width(2)
+    t.pu()
+    t.goto(-100,-300)#leg1
+    t.pd()
+    t.goto(100,-250)#leg2
+    t.goto(0,-200)#leg3
+    t.goto(-100,-300)#leg1
+    t.goto(-85,-300)#leg1.5
+    t.goto(115,-250)#hopper
+    t.goto(15,-200)#leg2.5
+    t.goto(-85,-300)#leg3.5
+
 def displayStuctureWithTurtle():
     '''
     Displays our structure in an isometric view with turtle graphics.
     '''
-    pass
+    screen = t.Screen()
+    screen.bgcolor('Black')
+    t.goto(-100,-300)
+    t.speed(100)
+    leg1()
+    leg2()
+    leg3()
+    base()
+    t.done()
 
 def main():
     '''
@@ -194,6 +442,9 @@ def main():
     actualPennies = 10
     appendTeamResultsCSV(actualProfit,profitPercentError,actualHeight,actualPennies)
     resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies)
+
+
+    displayStuctureWithTurtle()
 
 if __name__ == "__main__":
     main()
