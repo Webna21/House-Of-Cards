@@ -15,7 +15,13 @@ import numpy as np
 import turtle as t
 
 '''
-
+This program calculates the total profit and percent error between expected and actual profit,
+graphs the profit and percent error and outputs results to console,
+graphs height vs. weight compared to previous teams,
+graphs profit and percent error compared to previous teams,
+appends results to "HouseofCards.csv" on the last row,
+creates a .txt file with the results,
+and generates drawing of the structure with turtle graphics.
 '''
 
 def costs():
@@ -86,9 +92,9 @@ def graphTotalProfitAndAccuracy(estimated, actual, percentError):
     '''
     Displays a bar graph of the expected profit, actual profit, and the percent error between them.
     '''
-    pltx = np.arange(2)
-    plt1y = np.array((estimated,actual))
-    plt2y = np.array((0,percentError))
+    pltx = np.arange(3)
+    plt1y = np.array((estimated,actual,0))
+    plt2y = np.array((0,0,percentError))
 
     axs1 = plt.subplot()
     
@@ -97,7 +103,7 @@ def graphTotalProfitAndAccuracy(estimated, actual, percentError):
     axs1.set_xticks(())
     # axs1.set_ylim(estimated-30,estimated+20)
     axs1.set_ylim(0, max(150, estimated, actual))
-    axs1.set_xlabel(f"Expected profit: {estimated}k   |   Percent Error: {percentError:.3f}%   |   Actual profit: {actual}k")
+    axs1.set_xlabel(f"Expected profit: {estimated}k   |   Actual profit: {actual}k   |   Percent Error: {percentError:.3f}%")
     axs1.set_title("Profit and Percent Error")
 
     axs2 = axs1.twinx()
