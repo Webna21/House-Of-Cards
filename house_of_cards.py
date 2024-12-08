@@ -23,22 +23,52 @@ appends results to "HouseofCards.csv" on the last row,
 creates a .txt file with the results,
 and generates drawing of the structure with turtle graphics.
 '''
+# expected variables, hardcoded
+expected_cards_purchased = 48
+expected_rolls_tape = 1
+expected_pairs_scissors = 0
+expected_time_beyond_25 = 0
+
+expected_successfully_built = 1
+expected_height_beyond_36 = 28
+expected_pennies_beyond_10 = 0
+expected_time_under_25 = 9
+
+expected_profit = 107000
+
+# actual variables
+actual_cards_purchased = -1
+actual_rolls_tape = -1
+actual_pairs_scissors = -1
+actual_time_beyond_25 = -1
+
+actual_successfully_built = -1
+actual_height_beyond_36 = -1
+actual_pennies_beyond_10 = -1
+actual_time_under_25 = -1
+
+actual_profit = -1
 
 def costs():
     '''
     Calculates, prints, returns the cost.
     '''
-    cards_purchased = int(input("\t\tCards purchased: "))
-    rolls_of_tape = int(input("\t\tRolls of tape used: ") or 1)
-    pairs_of_scissors = int(input("\t\tPairs of scissors used: ") or 1)
-    time_beyond_25 = float(input("\t\tTime used beyond 25 minutes: ") or 0)
+    global actual_cards_purchased 
+    global actual_rolls_tape
+    global actual_pairs_scissors
+    global actual_time_beyond_25
+
+    actual_cards_purchased = int(input("\t\tCards purchased: "))
+    actual_rolls_tape = int(input("\t\tRolls of tape used: ") or 1)
+    actual_pairs_scissors = int(input("\t\tPairs of scissors used: ") or 1)
+    actual_time_beyond_25 = float(input("\t\tTime used beyond 25 minutes: ") or 0)
     print("Costs")
-    print(f"Cards purchased:\t\t{cards_purchased} x $1000 each =\t{cards_purchased*1000}")
-    print(f"Rolls of tape used:\t\t{rolls_of_tape} x $10000 each =\t{rolls_of_tape*10000}")
-    print(f"Pairs of scissors used:\t\t{pairs_of_scissors} x $5000 each =\t{pairs_of_scissors*5000}")
-    print(f"Time used beyond 25 minutes:\t{time_beyond_25} x $2000 each =\t{time_beyond_25*2000}")
-    print(f"Total Costs:\t\t\t\t\t\t{cards_purchased*1000 + rolls_of_tape*10000 + pairs_of_scissors*5000 + time_beyond_25*2000}")
-    return cards_purchased*1000 + rolls_of_tape*10000 + pairs_of_scissors*5000 + time_beyond_25*2000
+    print(f"Cards purchased:\t\t{actual_cards_purchased} x $1000 each =\t{actual_cards_purchased*1000}")
+    print(f"Rolls of tape used:\t\t{actual_rolls_tape} x $10000 each =\t{actual_rolls_tape*10000}")
+    print(f"Pairs of scissors used:\t\t{actual_pairs_scissors} x $5000 each =\t{actual_pairs_scissors*5000}")
+    print(f"Time used beyond 25 minutes:\t{actual_time_beyond_25} x $2000 each =\t{actual_time_beyond_25*2000}")
+    print(f"Total Costs:\t\t\t\t\t\t{actual_cards_purchased*1000 + actual_rolls_tape*10000 + actual_pairs_scissors*5000 + actual_time_beyond_25*2000}")
+    return actual_cards_purchased*1000 + actual_rolls_tape*10000 + actual_pairs_scissors*5000 + actual_time_beyond_25*2000
 
 
 
@@ -46,17 +76,24 @@ def revenue():
     '''
     Calculates, prints, and returns the revenue.
     '''
-    successfully_built = int(input("\t\tSucessfully built structure (Y/N): ") in ["Y",'y',"yes","YES","1"] or True)
-    height = int(input("\t\tHeight above 36 inches: ") or 0)
-    strength = int(input("\t\tPennies beyond 10: ") or 0)
-    speed = int(input("\t\tAvailable time not utilized (minutes under 25): ") or 0)
+    
+    global actual_successfully_built
+    global actual_height_beyond_36
+    global actual_pennies_beyond_10
+    global actual_time_under_25
+
+
+    actual_successfully_built = int(input("\t\tSucessfully built structure (Y/N): ") in ["Y",'y',"yes","YES","1"] or True)
+    actual_height_beyond_36 = int(input("\t\tHeight above 36 inches: ") or 0)
+    actual_pennies_beyond_10 = int(input("\t\tPennies beyond 10: ") or 0)
+    actual_time_under_25 = int(input("\t\tAvailable time not utilized (minutes under 25): ") or 0)
     print("Revenue")
-    print(f"Successfully built structure: \t\t\t\t{successfully_built} x $100000 = \t\t{successfully_built * 100000}")
-    print(f"Height. Additional height (inches above 36): \t\t{height} x $2000 each = \t{height*2000}")
-    print(f"Strength. Additional pennies (beyond 10): \t\t{strength} x $500 each = \t{strength*500}")
-    print(f"Speed. Available time not utilized (minutes under 25): \t{speed} x $1000 each = \t{speed*1000}")
-    print(f"Total Revenue: \t\t\t\t\t\t\t\t\t{successfully_built * 100000 + height*2000 + strength*500 + speed*1000}")
-    return successfully_built * 100000 + height*2000 + strength*500 + speed*1000
+    print(f"Successfully built structure: \t\t\t\t{actual_successfully_built} x $100000 = \t\t{actual_successfully_built * 100000}")
+    print(f"Height. Additional height (inches above 36): \t\t{actual_height_beyond_36} x $2000 each = \t{actual_height_beyond_36*2000}")
+    print(f"Strength. Additional pennies (beyond 10): \t\t{actual_pennies_beyond_10} x $500 each = \t{actual_pennies_beyond_10*500}")
+    print(f"Speed. Available time not utilized (minutes under 25): \t{actual_time_under_25} x $1000 each = \t{actual_time_under_25*1000}")
+    print(f"Total Revenue: \t\t\t\t\t\t\t\t\t{actual_successfully_built * 100000 + actual_height_beyond_36*2000 + actual_pennies_beyond_10*500 + actual_time_under_25*1000}")
+    return actual_successfully_built * 100000 + actual_height_beyond_36*2000 + actual_pennies_beyond_10*500 + actual_time_under_25*1000
 
 
 
@@ -64,9 +101,12 @@ def totalProfitcalculation():
     '''
     Calculates, prints, and returns the profit.
     '''
+    global actual_profit
+
     cost = costs()
     rev = revenue()
     print(f"\nTotal Profit = Total Revenue - Total Costs = {rev} - {cost} = {rev-cost}")
+    actual_profit = rev-cost
     return rev-cost
 
 
@@ -75,8 +115,8 @@ def calculateTotalProfitAndAccuracy():
     '''
     Calculates, prints, and returns the expected profit, acutal profit, and percent error between them.
     '''
-    print("Expected".center(100,"-"))
-    expected = totalProfitcalculation()
+    #print("Expected".center(100,"-"))
+    expected = expected_profit
     print("Actual".center(100,"-"))
     actual = totalProfitcalculation()
     print("Accuracy".center(100,"-"))
@@ -434,18 +474,18 @@ def main():
     graphTotalProfitAndAccuracy(expected/1000, actual/1000, percentError)
 
 
-    expectedPennies = 10
-    expectedHeight = 65
-    expectedProfit = 100000
-    profitPercentError = 14
+    profitPercentError = percentError
+
+    expectedPennies = expected_pennies_beyond_10 + 10
+    expectedHeight = expected_height_beyond_36 + 36
+    expectedProfit = expected_profit
     graphHeightWeightComparison(expectedPennies, expectedHeight)
     graphProfitPercentErrorComparison(expectedProfit, profitPercentError)
 
 
-    actualProfit = 96000
-    profitPercentError = 14
-    actualHeight = 100
-    actualPennies = 10
+    actualProfit = actual_profit
+    actualHeight = actual_height_beyond_36 + 36
+    actualPennies = actual_pennies_beyond_10 + 10
     appendTeamResultsCSV(actualProfit,profitPercentError,actualHeight,actualPennies)
     resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies)
 
