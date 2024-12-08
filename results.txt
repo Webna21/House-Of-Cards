@@ -1,4 +1,4 @@
 Profit: 74000.0
-Profit Percent error: 30.8411214953271%
+Profit Percent error: 69%
 Height: 46
 Pennies: 10

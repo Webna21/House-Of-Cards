@@ -231,7 +231,7 @@ def resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies):
     '''
     with open("results.txt","w") as file:
         file.write(f"Profit: {actualProfit}\n")
-        file.write(f"Profit Percent error: {profitPercentError}%\n")
+        file.write(f"Profit Percent error: {100-profitPercentError:.0f}%\n")
         file.write(f"Height: {actualHeight}\n")
         file.write(f"Pennies: {actualPennies}\n")
 
