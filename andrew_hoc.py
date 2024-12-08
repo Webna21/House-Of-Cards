@@ -1,20 +1,22 @@
-#  By submitting this assignment, I agree to the following:
-#  "Aggies do not lie, cheat, or steal, or tolerate those who do."
-#  "I have not given or received any unauthorized aid on this assignment."
+# By submitting this assignment, I agree to the following:
+# “Aggies do not lie, cheat, or steal, or tolerate those who do”
+# “I have not given or received any unauthorized aid on this assignment”
 #
-# Names:        Andrew Li
-#               Cameron King
-#               Gavin Munoz
-#               Thomas Janes
-# Section:      ENGR-559
-# Assignment:   House of Cards - Final Project
-# Date:         8 December 2024
+# Names:    Thomas Janes
+#           Cameron King
+#           Andrew Li
+#           Gavin Munoz
+# Section: ENGR-102-559
+# Assignment: Team Design Project Fall 2024
+# Date: 8 December 2024
 
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 def costs():
+    '''
+    Calculates, prints, returns the cost.
+    '''
     cards_purchased = int(input("\t\tCards purchased: "))
     rolls_of_tape = int(input("\t\tRolls of tape used: ") or 1)
     pairs_of_scissors = int(input("\t\tPairs of scissors used: ") or 1)
@@ -28,6 +30,9 @@ def costs():
     return cards_purchased*1000 + rolls_of_tape*10000 + pairs_of_scissors*5000 + time_beyond_25*2000
 
 def revenue():
+    '''
+    Calculates, prints, and returns the revenue.
+    '''
     successfully_built = int(input("\t\tSucessfully built structure (Y/N): ") in ["Y",'y',"yes","YES","1"] or True)
     height = int(input("\t\tHeight above 36 inches: ") or 0)
     strength = int(input("\t\tPennies beyond 10: ") or 0)
@@ -41,12 +46,18 @@ def revenue():
     return successfully_built * 100000 + height*2000 + strength*500 + speed*1000
 
 def totalProfitcalculation():
+    '''
+    Calculates, prints, and returns the profit.
+    '''
     cost = costs()
     rev = revenue()
     print(f"\nTotal Profit = Total Revenue - Total Costs = {rev} - {cost} = {rev-cost}")
     return rev-cost
 
 def calculateTotalProfitAndAccuracy():
+    '''
+    Calculates, prints, and returns the expected profit, acutal profit, and percent error between them.
+    '''
     print("Expected".center(100,"-"))
     expected = totalProfitcalculation()
     print("Actual".center(100,"-"))
@@ -60,6 +71,9 @@ def calculateTotalProfitAndAccuracy():
 
 
 def graphTotalProfitAndAccuracy(estimated, actual, percentError):
+    '''
+    Displays a bar graph of the expected profit, actual profit, and the percent error between them.
+    '''
     pltx = np.arange(2)
     plt1y = np.array((estimated,actual))
     plt2y = np.array((0,percentError))
@@ -83,6 +97,9 @@ def graphTotalProfitAndAccuracy(estimated, actual, percentError):
     plt.show()
 
 def extractFileData():
+    '''
+    Extracts data from "HouseofCardsResults.csv" and returns the heights, pennies, profits, and profit accuracies.
+    '''
     with open("HouseofCardsResults.csv") as file:
         for _ in range(2):
             file.readline()
@@ -98,6 +115,9 @@ def extractFileData():
         return (heights, pennies), (profits, profitAccuracies)
 
 def graphHeightWeightComparison(expectedPennies, expectedHeight):
+    '''
+    Displays a scatter plot illustrating previous teams' height vs. weight compared to our's.
+    '''
     data, _ = extractFileData()
     heights = data[0]
     pennies = data[1]
@@ -112,6 +132,9 @@ def graphHeightWeightComparison(expectedPennies, expectedHeight):
     plt.show()
 
 def graphProfitPercentErrorComparison(expectedProfit, profitPercentError):
+    '''
+    Displays a scatter plot illustrating previous teams' profit and percent error compared to our's.
+    '''
     _, data = extractFileData()
     profits = data[0]
     profitAccuracies = data[1]
@@ -127,11 +150,16 @@ def graphProfitPercentErrorComparison(expectedProfit, profitPercentError):
 
 
 def appendTeamResultsCSV(actualProfit,profitPercentError,actualHeight,actualPennies):
+    '''
+    Appends our profit, precent error, height, and pennies to "HouseOfCardsResults.csv".
+    '''
     with open("HouseofCardsResults.csv","a") as file:
         file.write(f"59,{actualProfit},{profitPercentError}%,{actualHeight},{actualPennies}")
-    pass
 
 def resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies):
+    '''
+    Writes to "results.txt" our profit, percent error, height, and pennies.
+    '''
     with open("results.txt","w") as file:
         file.write(f"Profit: {actualProfit}\n")
         file.write(f"Profit Percent error: {profitPercentError}%\n")
@@ -139,9 +167,15 @@ def resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies):
         file.write(f"Pennies: {actualPennies}\n")
 
 def displayStuctureWithTurtle():
+    '''
+    Displays our structure in an isometric view with turtle graphics.
+    '''
     pass
 
 def main():
+    '''
+    Runs the program.
+    '''
     #expected, actual, percentError = calculateTotalProfitAndAccuracy()
             # expected = 105000
             # actual = 120000
