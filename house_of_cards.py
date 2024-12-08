@@ -57,11 +57,13 @@ def costs():
     global actual_rolls_tape
     global actual_pairs_scissors
     global actual_time_beyond_25
-
-    actual_cards_purchased = int(input("\t\tCards purchased: "))
-    actual_rolls_tape = int(input("\t\tRolls of tape used: ") or 1)
-    actual_pairs_scissors = int(input("\t\tPairs of scissors used: ") or 1)
-    actual_time_beyond_25 = float(input("\t\tTime used beyond 25 minutes: ") or 0)
+    try:
+        actual_cards_purchased = int(input("\t\tCards purchased: "))
+        actual_rolls_tape = int(input("\t\tRolls of tape used: ") or 1)
+        actual_pairs_scissors = int(input("\t\tPairs of scissors used: ") or 1)
+        actual_time_beyond_25 = float(input("\t\tTime used beyond 25 minutes: ") or 0)
+    except:
+        print("Casting Error Calculating Cost")
     print("Costs")
     print(f"Cards purchased:\t\t{actual_cards_purchased} x $1000 each =\t{actual_cards_purchased*1000}")
     print(f"Rolls of tape used:\t\t{actual_rolls_tape} x $10000 each =\t{actual_rolls_tape*10000}")
@@ -82,11 +84,13 @@ def revenue():
     global actual_pennies_beyond_10
     global actual_time_under_25
 
-
-    actual_successfully_built = int(input("\t\tSucessfully built structure (Y/N): ") in ["Y",'y',"yes","YES","1"] or True)
-    actual_height_beyond_36 = int(input("\t\tHeight above 36 inches: ") or 0)
-    actual_pennies_beyond_10 = int(input("\t\tPennies beyond 10: ") or 0)
-    actual_time_under_25 = int(input("\t\tAvailable time not utilized (minutes under 25): ") or 0)
+    try:
+        actual_successfully_built = int(input("\t\tSucessfully built structure (Y/N): ") in ["Y",'y',"yes","YES","1"] or True)
+        actual_height_beyond_36 = int(input("\t\tHeight above 36 inches: ") or 0)
+        actual_pennies_beyond_10 = int(input("\t\tPennies beyond 10: ") or 0)
+        actual_time_under_25 = int(input("\t\tAvailable time not utilized (minutes under 25): ") or 0)
+    except:
+        print("Casting Error Calculating Revenue")
     print("Revenue")
     print(f"Successfully built structure: \t\t\t\t{actual_successfully_built} x $100000 = \t\t{actual_successfully_built * 100000}")
     print(f"Height. Additional height (inches above 36): \t\t{actual_height_beyond_36} x $2000 each = \t{actual_height_beyond_36*2000}")
@@ -115,7 +119,6 @@ def calculateTotalProfitAndAccuracy():
     '''
     Calculates, prints, and returns the expected profit, acutal profit, and percent error between them.
     '''
-    #print("Expected".center(100,"-"))
     expected = expected_profit
     print("Actual".center(100,"-"))
     actual = totalProfitcalculation()
