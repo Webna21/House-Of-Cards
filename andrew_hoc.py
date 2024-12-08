@@ -89,15 +89,11 @@ def extractFileData():
 
         data = [row.strip().split(',') for row in file]
         
-        teamNumbers = [int(row[0]) for row in data]
         profits = [int(row[1]) for row in data]
         profitAccuracies = [int(row[2][:-1]) for row in data]
         heights = [float(row[3]) for row in data]
         pennies = [int(row[4]) for row in data]
         
-        # data_dict = {}
-        # for i in range(len(data)):
-        #     data_dict[teamNumbers[i]] = (profits[i], profitAccuracies[i], heights[i], pennies[i])
 
         return (heights, pennies), (profits, profitAccuracies)
 
@@ -130,7 +126,19 @@ def graphProfitPercentErrorComparison(expectedProfit, profitPercentError):
     plt.show()
 
 
-def fileModification():
+def appendTeamResultsCSV(actualProfit,profitPercentError,actualHeight,actualPennies):
+    with open("HouseofCardsResults.csv","a") as file:
+        file.write(f"59,{actualProfit},{profitPercentError}%,{actualHeight},{actualPennies}")
+    pass
+
+def resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies):
+    with open("results.txt","w") as file:
+        file.write(f"Profit: {actualProfit}\n")
+        file.write(f"Profit Percent error: {profitPercentError}%\n")
+        file.write(f"Height: {actualHeight}\n")
+        file.write(f"Pennies: {actualPennies}\n")
+
+def displayStuctureWithTurtle():
     pass
 
 def main():
@@ -147,6 +155,14 @@ def main():
     expectedProfit = 100000
     profitPercentError = 14
     graphProfitPercentErrorComparison(expectedProfit, profitPercentError)
+
+
+    actualProfit = 96000
+    profitPercentError = 14
+    actualHeight = 100
+    actualPennies = 10
+    appendTeamResultsCSV(actualProfit,profitPercentError,actualHeight,actualPennies)
+    resultsToTxt(actualProfit,profitPercentError,actualHeight,actualPennies)
 
 if __name__ == "__main__":
     main()
