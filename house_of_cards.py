@@ -436,9 +436,9 @@ def main():
 
     expectedPennies = 10
     expectedHeight = 65
-    graphHeightWeightComparison(expectedPennies, expectedHeight)
     expectedProfit = 100000
     profitPercentError = 14
+    graphHeightWeightComparison(expectedPennies, expectedHeight)
     graphProfitPercentErrorComparison(expectedProfit, profitPercentError)
 
 
