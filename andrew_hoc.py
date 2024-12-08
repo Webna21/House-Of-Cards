@@ -176,11 +176,8 @@ def main():
     '''
     Runs the program.
     '''
-    #expected, actual, percentError = calculateTotalProfitAndAccuracy()
-            # expected = 105000
-            # actual = 120000
-            # percentError = abs((actual-expected)/expected) * 100
-    #graphTotalProfitAndAccuracy(expected/1000, actual/1000, percentError)
+    expected, actual, percentError = calculateTotalProfitAndAccuracy()
+    graphTotalProfitAndAccuracy(expected/1000, actual/1000, percentError)
 
 
     expectedPennies = 10
