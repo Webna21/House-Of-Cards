@@ -144,7 +144,6 @@ def graphTotalProfitAndAccuracy(estimated, actual, percentError):
     l1 = axs1.bar(pltx,plt1y,color = "b", label = "Profit")
     axs1.set_ylabel(f"Profit (Thousand Dollars)")
     axs1.set_xticks(())
-    # axs1.set_ylim(estimated-30,estimated+20)
     axs1.set_ylim(0, max(150, estimated, actual))
     axs1.set_xlabel(f"Expected profit: {estimated}k   |   Actual profit: {actual}k   |   Percent Error: {percentError:.3f}%")
     axs1.set_title("Profit and Percent Error")
