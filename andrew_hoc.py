@@ -101,16 +101,34 @@ def extractFileData():
 
         return (heights, pennies), (profits, profitAccuracies)
 
-def graphHeightWeightComparison(fileData):
+def graphHeightWeightComparison(expectedPennies, expectedHeight):
     data, _ = extractFileData()
     heights = data[0]
     pennies = data[1]
-    print(heights)
-    print()
-    print(pennies)
+    plt.grid(True)
+    plt.scatter(pennies, heights, color="blue",label="Previous Teams")
+    plt.title("Height vs. Weight")
+    plt.xlabel("Pennies")
+    plt.ylabel("Height (Inches)")
+    plt.scatter(expectedPennies,expectedHeight,color="red",label="Our Team")
+    plt.legend(loc="upper right")
 
-def graphProfitPercentErrorComparison(fileData):
-    pass
+    plt.show()
+
+def graphProfitPercentErrorComparison(expectedProfit, profitPercentError):
+    _, data = extractFileData()
+    profits = data[0]
+    profitAccuracies = data[1]
+    plt.grid(True)
+    plt.scatter(profits, profitAccuracies, color="blue",label="Previous Teams")
+    plt.title("Profit and Profit Percent Error")
+    plt.xlabel("Profit (Dollars)")
+    plt.ylabel("Profit Percent Error (%)")
+    plt.scatter(expectedProfit,profitPercentError,color="red",label="Our Team")
+    plt.legend(loc="lower left")
+
+    plt.show()
+
 
 def fileModification():
     pass
@@ -123,9 +141,12 @@ def main():
     #graphTotalProfitAndAccuracy(expected/1000, actual/1000, percentError)
 
 
-    fileData = extractFileData()
-    graphHeightWeightComparison(fileData)
-    graphProfitPercentErrorComparison(fileData)
+    expectedPennies = 10
+    expectedHeight = 65
+    graphHeightWeightComparison(expectedPennies, expectedHeight)
+    expectedProfit = 100000
+    profitPercentError = 14
+    graphProfitPercentErrorComparison(expectedProfit, profitPercentError)
 
 if __name__ == "__main__":
     main()
