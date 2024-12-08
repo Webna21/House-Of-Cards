@@ -221,7 +221,7 @@ def appendTeamResultsCSV(actualProfit,profitPercentError,actualHeight,actualPenn
     Appends our profit, precent error, height, and pennies to "HouseOfCardsResults.csv".
     '''
     with open("HouseofCardsResults.csv","a") as file:
-        file.write(f"59,{actualProfit},{profitPercentError}%,{actualHeight},{actualPennies}")
+        file.write(f"59,{actualProfit},{100-profitPercentError:.0f}%,{actualHeight},{actualPennies}")
 
 
 
